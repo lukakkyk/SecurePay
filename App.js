@@ -5,7 +5,9 @@ import { useCallback, useEffect, useState } from "react";
 import * as Font from "expo-font";
 import LogIn from "./src/screens/LogIn";
 import { NavigationContainer } from "@react-navigation/native";
+import MainNavigator from './src/navigation/MainNavigator';
 import AuthNavigation from "./src/navigation/AuthNavigation";
+ 
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
@@ -51,7 +53,8 @@ export default function App() {
   return (
     <SafeAreaProvider onLayout={onLayout}>
       <NavigationContainer>
-        <AuthNavigation />
+        {/* <AuthNavigation /> */}
+        <MainNavigator />
       </NavigationContainer>
     </SafeAreaProvider>
   );

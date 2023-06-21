@@ -6,22 +6,29 @@ import {
   SafeAreaView,
   TouchableWithoutFeedback,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Octicons } from "@expo/vector-icons";
 import Pressable from "./Pressable";
-const Header = ({ iconRight, onRightPress, title }) => {
+const Header = ({ iconRight, onRightPress, title, iconLeft, onLeftPress }) => {
   return (
     <SafeAreaView>
       <View style={styles.header}>
         <Pressable onPress={onRightPress}>
           {iconRight && (
-            <View style={styles.leftIcon}>
-              <AntDesign name="left" size={18} color="rgba(28, 28, 28, 0.98)" />
+            <View style={styles.rightIcon}>
+              <AntDesign name="left" size={16} color="rgba(28, 28, 28, 0.98)" />
             </View>
           )}
         </Pressable>
         <View style={styles.centeredContainer}>
           <Text style={styles.title}>{title}</Text>
         </View>
+        <Pressable onPress={onLeftPress}>
+          {iconLeft && (
+            <View style={styles.leftIcon}>
+              <Octicons name="calendar" size={16} color="rgba(28, 28, 28, 0.98)" />
+            </View>
+          )}
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -29,21 +36,24 @@ const Header = ({ iconRight, onRightPress, title }) => {
 
 const styles = StyleSheet.create({
   header: {
-    flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     backgroundColor: "#fff",
-    paddingHorizontal:24
+    paddingHorizontal: 24,
   },
   leftIcon: {
-    marginRight:'auto'
+    marginLeft: "auto",
     // bottom:-11,
     // backgroundColor:'purple'
+  },
+  rightIcon: {
+    marginRight: "auto",
   },
   centeredContainer: {
     flex: 1,
     alignItems: "center",
-    textAlign:'center'
+    textAlign: "center",
   },
   title: {
     fontSize: 14,
