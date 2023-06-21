@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   SafeAreaView,
-  TouchableWithoutFeedback,
 } from "react-native";
 import { AntDesign, Octicons } from "@expo/vector-icons";
 import Pressable from "./Pressable";
