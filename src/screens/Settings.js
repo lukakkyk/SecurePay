@@ -4,11 +4,16 @@ import SettingRow from "../components/SettingRow";
 import SettingSwitch from "../components/SettingSwitch";
 import { MaterialIcons } from "@expo/vector-icons";
 import Pressable from "../components/Pressable";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../store/authSlice";
+
 const Settings = () => {
   const [signature, setSignature] = useState(true);
   const [faceID, setFaceID] = useState(true);
   const [passcode, setPasscode] = useState(true);
   const [darkmode, setDarkmode] = useState(false);
+  const dispatch = useDispatch() 
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <Text style={styles.title}>Settings</Text>
@@ -39,7 +44,7 @@ const Settings = () => {
           value={darkmode}
           onValueChange={setDarkmode}
         />
-        <Pressable>
+        <Pressable onPress={() => dispatch(signOut())}>
           <View style={styles.logOutContainer}>
             <MaterialIcons name="logout" size={22} color="#FB4E4E" />
             <Text style={styles.logOutTitle}>Log Out</Text>

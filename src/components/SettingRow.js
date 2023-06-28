@@ -1,10 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
+import Icon from "./Icon";
 const SettingRow = ({ title, pressable }) => {
   return (
-    
     <View style={styles.setting}>
       <Text style={styles.settingName}>{title}</Text>
       <AntDesign name="right" size={17} color="black" />

@@ -1,28 +1,28 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Pressable from "./Pressable";
-const Transaction = () => {
+const TransactionSuccess = () => {
   return (
     <Pressable>
-    <View style={styles.transaction}>
-      <View style={styles.line}>
-        <Text style={styles.numberText}># 18793</Text>
-        <Text style={styles.moneyText}>$78.54</Text>
-      </View>
-      <View style={[styles.line, { backgroundColor: "#fff" }]}>
-        <Text style={styles.timeText}>Sep 26 2022 06:47 AM</Text>
-        <View style={styles.type}>
-          <Text style={styles.typeText}>Voided</Text>
+      <View style={styles.transaction}>
+        <View style={styles.line}>
+          <Text style={styles.numberText}># 18793</Text>
+          <Text style={styles.moneyText}>$78.54</Text>
         </View>
+        <View style={[styles.line, { backgroundColor: "#fff" }]}>
+          <Text style={styles.timeText}>Sep 26 2022 06:47 AM</Text>
+          <View style={styles.type}>
+            <Text style={styles.typeText}>Approved (Not Settled)</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            marginTop: 17,
+            height: 1,
+            backgroundColor: "rgba(29, 29, 29, 0.1)",
+          }}
+        />
       </View>
-      <View
-        style={{
-          marginTop: 17,
-          height: 1,
-          backgroundColor: "rgba(29, 29, 29, 0.1)",
-        }}
-      />
-    </View>
     </Pressable>
   );
 };
@@ -56,18 +56,19 @@ const styles = StyleSheet.create({
   },
   type: {
     paddingHorizontal: 8,
-    backgroundColor: "rgba(29, 29, 29, 0.05)",
+    backgroundColor: "rgba(40, 190, 109, 0.14)",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 100,
-    marginTop:4
+    marginTop: 4,
   },
   typeText: {
     fontFamily: "regular",
     fontSize: 12,
     lineHeight: 16,
+    color:'rgba(26, 174, 95, 1)',
     letterSpacing:0.4
   },
 });
 
-export default Transaction;
+export default TransactionSuccess;

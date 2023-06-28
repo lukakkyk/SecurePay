@@ -3,15 +3,18 @@ import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
 import * as Font from "expo-font";
-import LogIn from "./src/screens/LogIn";
-import { NavigationContainer } from "@react-navigation/native";
-import MainNavigator from './src/navigation/MainNavigator';
-import AuthNavigation from "./src/navigation/AuthNavigation";
- 
+import { Provider, useSelector } from "react-redux";
+import { store } from "./src/store/store";
+import AppNavigator from "./src/navigation/AppNavigator";
+// import NavigationContainer from "@react-navigation/native";
+import { useFonts } from "expo-font";
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [appIsLoaded, setAppIsLoaded] = useState(false);
+  const [fontsLoaded] = useFonts({
+    IcoMoon: require("./assets/fonts/icomoon/icomoon.ttf"),
+  });
 
   useEffect(() => {
     const prepare = async () => {
@@ -41,7 +44,7 @@ export default function App() {
   }, []);
 
   const onLayout = useCallback(async () => {
-    if (appIsLoaded) {
+    if (appIsLoaded && fontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [appIsLoaded]);
@@ -51,25 +54,10 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider onLayout={onLayout}>
-      <NavigationContainer>
-        {/* <AuthNavigation /> */}
-        <MainNavigator />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider onLayout={onLayout} styl={{ flex: 1 }}>
+        <AppNavigator />
+      </SafeAreaProvider>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  label: {
-    color: "black",
-    fontSize: 18,
-    fontFamily: "bold",
-  },
-});

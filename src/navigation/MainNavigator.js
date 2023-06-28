@@ -2,10 +2,11 @@ import Charge from "../screens/Charge";
 import Transactions from "../screens/Transactions";
 import Settings from "../screens/Settings";
 import { Text, View } from "react-native";
-
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Ionicons, Fontisto, AntDesign } from "@expo/vector-icons";
+import TransactionDetails from "../screens/TransactionDetails";
+import Icon from "../components/Icon";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -14,19 +15,20 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        tabBarStyle: {
+          paddingVertical: 14,
+          borderTopColor: "#1D1D1D0D",
+          borderTopWidth: 1,
+          height: 90,
+        },
         headerTitle: "",
         headerShadowVisible: false,
         tabBarActiveTintColor: "#28BE6D",
         tabBarInactiveTintColor: "rgba(29, 29, 29, 0.64)",
+        tabBarIconStyle: {
+          backgroundColor: "red",
+        },
         headerShown: false,
-        indicatorStyle: {
-          borderWidth: 2,
-          borderColor: "green",
-        },
-        tabBarItemStyle: {
-          borderTopColor: "rgba(29, 29, 29, 0.05)",
-          borderTopWidth: 1,
-        },
       }}
     >
       <Tab.Screen
@@ -47,8 +49,20 @@ const TabNavigator = () => {
               Charge
             </Text>
           ),
-          tabBarIcon: ({ color, size }) => (
-            <Fontisto name="dollar" size={size} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View
+              style={{
+                // backgroundColor: "green",
+                height: 60,
+                width: 64,
+                alignItems: "center",
+                borderTopWidth: focused ? 2 : 0,
+                borderTopColor: focused ? "#28BE6D" : null,
+                justifyContent: "center",
+              }}
+            >
+              <Icon name="money" size={20} iconColor={color} />
+            </View>
           ),
         }}
       />
@@ -70,8 +84,22 @@ const TabNavigator = () => {
               Transactions
             </Text>
           ),
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="retweet" size={size} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <View
+              style={{
+                // backgroundColor: "green",
+                height: 60,
+                width: 64,
+                alignItems: "center",
+                borderTopWidth: focused ? 2 : 0,
+                borderTopColor: focused ? "#28BE6D" : null,
+                borderBottomLeftRadius: focused ? 1 : null,
+                borderTopRightRadius: focused ? 1 : null,
+                justifyContent: "center",
+              }}
+            >
+              <Icon name="transactions" size={20} iconColor={color} />
+            </View>
           ),
         }}
       />
@@ -93,10 +121,20 @@ const TabNavigator = () => {
               Settings
             </Text>
           ),
-          tabBarIcon: ({ color, size }) => (
-            // <View style={{backgroundColor:'red', paddingTop:10}}>
-            <Ionicons name="settings-outline" size={size} color={color} />
-            // </View>
+          tabBarIcon: ({ color, focused }) => (
+            <View
+              style={{
+                // backgroundColor: "gr#ffeen",
+                height: 60,
+                width: 64,
+                alignItems: "center",
+                borderTopWidth: focused ? 2 : 0,
+                borderTopColor: focused ? "#28BE6D" : null,
+                justifyContent: "center",
+              }}
+            >
+              <Icon name="settings" size={20} iconColor={color} />
+            </View>
           ),
         }}
       />
@@ -104,4 +142,25 @@ const TabNavigator = () => {
   );
 };
 
-export default TabNavigator;
+const StackNavigator = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="TransactionDetails"
+        component={TransactionDetails}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const MainNavigator = () => {
+  return <StackNavigator />;
+};
+
+export default MainNavigator;
