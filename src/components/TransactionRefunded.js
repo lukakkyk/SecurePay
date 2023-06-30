@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   type: {
     paddingHorizontal: 8,
-    backgroundColor: '#FFC42352',
+    backgroundColor: 'rgba(255, 196, 35, 0.32)',
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 100,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 12,
     lineHeight: 16,
-    color:'#FFC423',
+    color:'#C1951E',
     letterSpacing:0.4
   },
 });

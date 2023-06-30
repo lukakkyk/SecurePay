@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import Header from "../components/Header";
 import { AntDesign } from "@expo/vector-icons";
 import Search from "../components/Search";
@@ -7,17 +7,33 @@ import Transaction from "../components/Transaction";
 import TransactionSuccess from "../components/TransactionSuccess";
 import TransactionDeclined from "../components/TransactionDeclined";
 import TransactionRefunded from "../components/TransactionRefunded";
+import Icon from "../components/Icon";
 const Transactions = () => {
   return (
-    <View style={styles.container}>
-      <Header iconRight={true} iconLeft={true} title="Transactions" />
-      <Search inputStyle={{ marginTop: 26 }} />
-      <Transaction />
-      <TransactionSuccess />
-      <TransactionDeclined />
-      <TransactionRefunded />
-      <Transaction />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <View style={styles.headerContainer}>
+          <Text style={styles.title}>Transactions</Text>
+          <Icon style={{ marginTop: 10 }} name="Callendar" size={20} />
+        </View>
+        <Search inputStyle={{ marginTop: 26 }} />
+        <ScrollView
+          contentContainerStyle={{ paddingBottom: 90 }}
+          showsVerticalScrollIndicator={false}
+        >
+          <Transaction />
+          <TransactionSuccess />
+          <TransactionDeclined />
+          <TransactionRefunded />
+          <Transaction />
+          <Transaction />
+          <TransactionSuccess />
+          <TransactionDeclined />
+          <TransactionRefunded />
+          <Transaction />
+        </ScrollView>
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -25,6 +41,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  headerContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  title: {
+    // marginHorizontal: 20,
+    marginTop: 10,
+    color: "rgba(28, 28, 28, 0.98)",
+    fontSize: 16,
+    fontFamily: "bold",
+    lineHeight: 24,
+    letterSpacing: 0.15,
   },
 });
 

@@ -6,7 +6,7 @@ const SettingRow = ({ title, pressable }) => {
   return (
     <View style={styles.setting}>
       <Text style={styles.settingName}>{title}</Text>
-      <AntDesign name="right" size={17} color="black" />
+      <Icon size={20} name="right" />
     </View>
   );
 };

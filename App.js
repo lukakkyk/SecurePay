@@ -1,4 +1,4 @@
-import { StyleSheet, Text } from "react-native";
+import { StatusBar } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
@@ -56,6 +56,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaProvider onLayout={onLayout} styl={{ flex: 1 }}>
+        <StatusBar backgroundColor='#fff' />
         <AppNavigator />
       </SafeAreaProvider>
     </Provider>

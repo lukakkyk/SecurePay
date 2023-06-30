@@ -4,30 +4,59 @@ import Settings from "../screens/Settings";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Ionicons, Fontisto, AntDesign } from "@expo/vector-icons";
 import TransactionDetails from "../screens/TransactionDetails";
 import Icon from "../components/Icon";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
+const CustomTabItem = ({ iconName, tabName, iconColor }) => {
+  return (
+    <View
+      style={{
+        backgroundColor: "#fff",
+        width: 130,
+        height: 64,
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Icon name={iconName} iconColor={iconColor} size={20} />
+      <Text
+        style={{
+          fontFamily: "bold",
+          fontSize: 10,
+          lineHeight: 14,
+          paddingTop: 7,
+        }}
+      >
+        {tabName}
+      </Text>
+    </View>
+  );
+};
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          paddingVertical: 14,
+          paddingBottom: 30,
           borderTopColor: "#1D1D1D0D",
           borderTopWidth: 1,
-          height: 90,
+        },
+        tabBarItemStyle: {
+          // backgroundColor: "purple",
+          // height:1000,
+          // marginBottom:20
+          // borderTopColor: "green",
+          // borderTopWidth: 1,
         },
         headerTitle: "",
         headerShadowVisible: false,
         tabBarActiveTintColor: "#28BE6D",
         tabBarInactiveTintColor: "rgba(29, 29, 29, 0.64)",
-        tabBarIconStyle: {
-          backgroundColor: "red",
-        },
         headerShown: false,
       }}
     >
@@ -50,19 +79,7 @@ const TabNavigator = () => {
             </Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View
-              style={{
-                // backgroundColor: "green",
-                height: 60,
-                width: 64,
-                alignItems: "center",
-                borderTopWidth: focused ? 2 : 0,
-                borderTopColor: focused ? "#28BE6D" : null,
-                justifyContent: "center",
-              }}
-            >
-              <Icon name="money" size={20} iconColor={color} />
-            </View>
+            <Icon name="Charge" size={30} iconColor={color} />
           ),
         }}
       />
@@ -85,21 +102,7 @@ const TabNavigator = () => {
             </Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View
-              style={{
-                // backgroundColor: "green",
-                height: 60,
-                width: 64,
-                alignItems: "center",
-                borderTopWidth: focused ? 2 : 0,
-                borderTopColor: focused ? "#28BE6D" : null,
-                borderBottomLeftRadius: focused ? 1 : null,
-                borderTopRightRadius: focused ? 1 : null,
-                justifyContent: "center",
-              }}
-            >
-              <Icon name="transactions" size={20} iconColor={color} />
-            </View>
+            <Icon name="transactions" size={30} iconColor={color} />
           ),
         }}
       />
@@ -122,19 +125,7 @@ const TabNavigator = () => {
             </Text>
           ),
           tabBarIcon: ({ color, focused }) => (
-            <View
-              style={{
-                // backgroundColor: "gr#ffeen",
-                height: 60,
-                width: 64,
-                alignItems: "center",
-                borderTopWidth: focused ? 2 : 0,
-                borderTopColor: focused ? "#28BE6D" : null,
-                justifyContent: "center",
-              }}
-            >
-              <Icon name="settings" size={20} iconColor={color} />
-            </View>
+            <Icon name="Settings" size={30} iconColor={color} />
           ),
         }}
       />

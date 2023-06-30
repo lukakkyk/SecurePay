@@ -1,12 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Pressable from "./Pressable";
-const Button = ({ title, onPress }) => {
+const Button = ({ title, onPress, containerStyle, titleStyle }) => {
   return (
     <Pressable onPress={onPress}>
-      {/* <View style={styles.line}/> */}
-      <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+      <View style={[styles.container, containerStyle]}>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
       </View>
     </Pressable>
   );

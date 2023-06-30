@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 12,
     lineHeight: 16,
-    color:'rgba(26, 174, 95, 1)',
+    color:'#17854A',
     letterSpacing:0.4
   },
 });

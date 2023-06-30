@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, TextInput } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
-const Search = ({inputStyle}) => {
+const Search = ({inputStyle, ...props}) => {
   return (
     <View style={[styles.inputContainer, inputStyle]}>
       <AntDesign
