@@ -1,9 +1,10 @@
 import Charge from "../screens/Charge";
 import Transactions from "../screens/Transactions";
+import AddTip from "../screens/AddTip";
 import Settings from "../screens/Settings";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator, TransitionPresets } from "@react-navigation/native-stack";
 import TransactionDetails from "../screens/TransactionDetails";
 import Icon from "../components/Icon";
 
@@ -146,6 +147,21 @@ const StackNavigator = () => {
         component={TransactionDetails}
         options={{ headerShown: false }}
       />
+      <Stack.Group
+        screenOptions={{
+          presentation: "transparentModal",
+          animation: 'fade',
+        }}
+      >
+        <Stack.Screen
+          name="AddTip"
+          component={AddTip}
+          screenOptions={{
+           animationEnabled:false
+          }}
+          options={{ headerShown: false,}}
+        />
+      </Stack.Group>
     </Stack.Navigator>
   );
 };

@@ -11,7 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
 
-const Charge = () => {
+const Charge = ({navigation}) => {
   const [inputValue, setInputValue] = useState("0.00");
 
   function PressableRow({ style, children, ...rest }) {
@@ -108,7 +108,7 @@ const Charge = () => {
         </RN>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate('AddTip')}>
           <View style={styles.outlineButton}>
             <Icon name="edit" iconColor="#E2B338" size={16} />
             <Text style={styles.noteText}>Add Note</Text>
@@ -124,8 +124,9 @@ const Charge = () => {
       </View>
       <View
         style={{
-          backgroundColor: "#fff",
-          flex: 1,
+          backgroundColor: "#red",
+          // flex: 1,
+          marginTop:40,
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 24,

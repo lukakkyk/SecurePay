@@ -5,8 +5,11 @@ import { useCallback, useEffect, useState } from "react";
 import * as Font from "expo-font";
 import { Provider, useSelector } from "react-redux";
 import { store } from "./src/store/store";
+
 import AppNavigator from "./src/navigation/AppNavigator";
 // import NavigationContainer from "@react-navigation/native";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AddTip from "./src/screens/AddTip";
 import { useFonts } from "expo-font";
 SplashScreen.preventAutoHideAsync();
 
@@ -54,11 +57,14 @@ export default function App() {
   }
 
   return (
+    <GestureHandlerRootView style={{flex:1}}>
     <Provider store={store}>
       <SafeAreaProvider onLayout={onLayout} styl={{ flex: 1 }}>
         <StatusBar backgroundColor='#fff' />
         <AppNavigator />
+        {/* <TestBottomSheet /> */}
       </SafeAreaProvider>
     </Provider>
+    </GestureHandlerRootView>
   );
 }
