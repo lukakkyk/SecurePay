@@ -3,7 +3,6 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useRef, useMemo } from "react";
 import { View, StyleSheet, Text, Pressable } from "react-native";
 import Box from "../components/Box";
-import Icon from "../components/Icon";
 // import Pressable from "../components/Pressable";
 
 const TipComponent = ({ title, amount, amountStyle }) => {

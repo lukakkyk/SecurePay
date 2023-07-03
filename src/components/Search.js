@@ -1,21 +1,31 @@
-import React from "react";
-import { View, StyleSheet, TextInput } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import React, { useRef } from "react";
+import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import Icon from "./Icon";
+const Search = ({ inputStyle, ...props }) => {
+  const textInputRef = useRef(null);
 
-const Search = ({inputStyle, ...props}) => {
+  const handleTextInputPress = () => {
+    textInputRef.current.focus();
+  };
+
   return (
-    <View style={[styles.inputContainer, inputStyle]}>
-      <AntDesign
-        style={styles.inputIcon}
-        name="search1"
-        size={18}
-        color="rgba(29, 29, 29, 0.84)"
-      />
-      <TextInput
-        placeholderTextColor="rgba(29, 29, 29, 0.64)"
-        placeholder="Search"
-      />
-    </View>
+    <TouchableOpacity onPress={handleTextInputPress}>
+      <View style={[styles.inputContainer, inputStyle]}>
+        <Icon
+          style={styles.inputIcon}
+          name="Search"
+          size={20}
+          iconColor="rgba(29, 29, 29, 0.84)"
+          iconPress={handleTextInputPress}
+        />
+        <TextInput
+          onPressIn={textInputRef}
+          placeholderTextColor="rgba(29, 29, 29, 0.64)"
+          placeholder="Search"
+          ref={textInputRef}
+        />
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -29,7 +39,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inputIcon: {
-    marginHorizontal: 17,
+    marginHorizontal: 12,
   },
 });
 

@@ -27,6 +27,7 @@ function MyInput(params) {
       {...params}
       animationDuration={100}
       containerStyles={containerStyles}
+      selectionColor="#28BE6D"
       isFocused={isFocused}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
@@ -84,7 +85,13 @@ export default function LogIn({ navigation }) {
             />
           </View>
           <View style={styles.forgotContainer}>
-            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Checkbox
                 color={isChecked ? "#28BE6D" : undefined}
                 style={styles.checkbox}
@@ -101,6 +108,29 @@ export default function LogIn({ navigation }) {
             </Text>
           </View>
         </View>
+
+        {/* <View
+          style={{
+            flex: 0.5,
+            alignItems: "center",
+            justifyContent: "flex-end",
+            backgroundColor: "yellow",
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "regular",
+              letterSpacing: 0.25,
+              lineHeight: 22,
+              textAlign: "center",
+              marginBottom: 80,
+              position: "absolute",
+              bottom: 0,
+            }}
+          >
+            SecurePay is a product of The OLB Group, Inc. Copyright 2022
+          </Text>
+        </View> */}
 
         <View style={styles.bottom}>
           <Button onPress={() => dispatch(signIn())} title="Sign In" />
@@ -131,14 +161,16 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     padding: 24,
+    backgroundColor: "#fff",
   },
   forgotContainer: {
-    // backgroundColor: "yellow",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   checkbox: {
     borderRadius: 5,
     marginRight: 11,
+    borderColor: "rgba(29, 29, 29, 0.4)",
   },
 });

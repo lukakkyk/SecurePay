@@ -5,73 +5,55 @@ import {
   StyleSheet,
   SafeAreaView,
   Pressable as RNPressable,
+  TouchableOpacity,
 } from "react-native";
 import { Text } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
 
-const Charge = ({navigation}) => {
-  const [inputValue, setInputValue] = useState("0.00");
-
-  function PressableRow({ style, children, ...rest }) {
-    return (
-      <RNPressable
-        style={({ pressed }) => [{ backgroundColor: pressed && "red" }, style]}
-        {...rest}
-      >
-        {children}
-      </RNPressable>
-    );
-  }
+const Charge = ({ navigation }) => {
+  // const [inputValue, setInputValue] = useState("0.00");
+  const [paymentAmount, setPaymentAmount] = useState("0.00");
 
   const handleButtonPress = (value) => {
-    if (value === "<") {
+    if (value === "delete") {
       // Handle backspace/delete logic
-      setInputValue((prevValue) => {
-        if (prevValue.length === 5) {
-          return prevValue.slice(0, -1);
-        } else if (prevValue.length === 4) {
-          return "0.00";
-        } else if (prevValue.length === 3) {
-          return "0.0";
-        } else if (prevValue.length === 2) {
-          return "0.";
-        } else {
-          return "0.00";
-        }
-      });
-    } else if (value === ".") {
-      // Handle decimal point logic
-      setInputValue((prevValue) => {
-        if (prevValue.includes(".")) {
-          return prevValue;
-        } else {
-          return prevValue + ".00";
-        }
-      });
+      setPaymentAmount(paymentAmount.slice(0, -1));
     } else {
-      // Handle number button press logic
-      setInputValue((prevValue) => {
-        if (prevValue === "0.00") {
-          return String(value) + ".00";
-        } else {
-          return prevValue.slice(0, -3) + String(value) + ".00";
-        }
-      });
+      const newPaymentAmount = paymentAmount + value;
+      setPaymentAmount(newPaymentAmount);
     }
   };
 
   const renderButton = (value) => {
-    return (
-      <PressableRow
-        key={value}
-        style={styles.button}
-        onPress={() => handleButtonPress(value)}
-      >
-        <Text style={styles.buttonText}>{value}</Text>
-      </PressableRow>
-    );
+    if (value === "delete") {
+      return (
+        <RNPressable
+          key={value}
+          style={({ pressed }) => [
+            styles.button,
+            pressed && styles.buttonPressed, // Apply the pressed styles conditionally
+          ]}
+          onPress={() => handleButtonPress(value)}
+        >
+          <Icon name="Delete" size={20} />
+        </RNPressable>
+      );
+    } else {
+      return (
+        <RNPressable
+          key={value}
+          style={({ pressed }) => [
+            styles.button,
+            pressed && styles.buttonPressed, // Apply the pressed styles conditionally
+          ]}
+          onPress={() => handleButtonPress(value)}
+        >
+          <Text style={styles.buttonText}>{value}</Text>
+        </RNPressable>
+      );
+    }
   };
 
   return (
@@ -98,17 +80,19 @@ const Charge = ({navigation}) => {
           Enter Amount
         </RN>
         <RN
+          adjustsFontSizeToFit={true}
+          numberOfLines={1}
           style={{
             color: "rgba(28, 28, 28, 0.98)",
             fontFamily: "medium",
             fontSize: 56,
           }}
         >
-          $ {inputValue}
+          $ {paymentAmount}
         </RN>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
-        <Pressable onPress={() => navigation.navigate('AddTip')}>
+        <Pressable onPress={() => navigation.navigate("AddTip")}>
           <View style={styles.outlineButton}>
             <Icon name="edit" iconColor="#E2B338" size={16} />
             <Text style={styles.noteText}>Add Note</Text>
@@ -117,16 +101,16 @@ const Charge = ({navigation}) => {
         <View style={{ marginHorizontal: 24 }}>
           <Pressable>
             <View style={styles.primaryButton}>
-              <Text style={styles.chargeText}>Charge ${inputValue}</Text>
+              <Text style={styles.chargeText}>Charge ${paymentAmount}</Text>
             </View>
           </Pressable>
         </View>
       </View>
       <View
         style={{
-          backgroundColor: "#red",
+          // backgroundColor: "#red",
           // flex: 1,
-          marginTop:40,
+          marginTop: 40,
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 24,
@@ -151,7 +135,7 @@ const Charge = ({navigation}) => {
           {renderButton("C")}
           {renderButton(0)}
 
-          {renderButton("<")}
+          {renderButton("delete")}
         </View>
       </View>
     </SafeAreaView>
@@ -214,6 +198,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 24,
+  },
+  buttonPressed: {
+    backgroundColor: "rgba(29, 29, 29, 0.05)",
   },
 });
 
