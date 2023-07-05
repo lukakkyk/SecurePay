@@ -2,43 +2,16 @@ import { useState } from "react";
 import {
   StyleSheet,
   Text,
-  TouchableHighlight,
   View,
   KeyboardAvoidingView,
+  Button as RNButton,
 } from "react-native";
 import { FloatingLabelInput } from "react-native-floating-label-input";
 import Checkbox from "expo-checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../components/Button";
 import { signIn } from "../store/authSlice";
-function MyInput(params) {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const containerStyles = {
-    borderWidth: 2,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    backgroundColor: "#fff",
-    borderColor: isFocused ? "#28BE6D" : "rgba(29, 29, 29, 0.1)",
-    borderRadius: 8,
-  };
-  return (
-    <FloatingLabelInput
-      {...params}
-      animationDuration={100}
-      containerStyles={containerStyles}
-      selectionColor="#28BE6D"
-      isFocused={isFocused}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-      customLabelStyles={{
-        colorFocused: "rgba(29, 29, 29, 0.64)",
-        colorBlurred: "rgba(29, 29, 29, 0.64)",
-        fontSizeFocused: 12,
-      }}
-    />
-  );
-}
+import ErrorDropdown from "../components/ErrorDropdown";
 
 export default function LogIn({ navigation }) {
   const [merchantId, setMerchantId] = useState("");
@@ -48,9 +21,42 @@ export default function LogIn({ navigation }) {
   const signInValue = useSelector((state) => state.auth.value);
   console.log("signInValue", signInValue);
 
-  // const signIn = () => {
-  //   dispatch(signIn());
-  // };
+  const [error, setError] = useState("");
+  const [errorDropDownAlert, setErrorDropDownAlert] = useState(false);
+
+  const simulateError = () => {
+    setErrorDropDownAlert(true);
+    setError("Invalid Username or password.");
+  };
+
+  function MyInput(params) {
+    const [isFocused, setIsFocused] = useState(false);
+
+    const containerStyles = {
+      borderWidth: 2,
+      paddingHorizontal: 16,
+      paddingVertical: 16,
+      backgroundColor: "#fff",
+      borderColor: isFocused ? "#28BE6D" : "rgba(29, 29, 29, 0.1)",
+      borderRadius: 8,
+    };
+    return (
+      <FloatingLabelInput
+        {...params}
+        animationDuration={100}
+        containerStyles={containerStyles}
+        selectionColor="#28BE6D"
+        isFocused={isFocused}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        customLabelStyles={{
+          colorFocused: "rgba(29, 29, 29, 0.64)",
+          colorBlurred: "rgba(29, 29, 29, 0.64)",
+          fontSizeFocused: 12,
+        }}
+      />
+    );
+  }
 
   return (
     <KeyboardAvoidingView
@@ -108,6 +114,13 @@ export default function LogIn({ navigation }) {
             </Text>
           </View>
         </View>
+        <RNButton title="Simulate Error" onPress={simulateError} />
+        {errorDropDownAlert && (
+          <ErrorDropdown
+            errorDropDownAlert={errorDropDownAlert}
+            error={error}
+          />
+        )}
 
         {/* <View
           style={{

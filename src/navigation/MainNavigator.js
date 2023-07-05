@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator, TransitionPresets } from "@react-navigation/native-stack";
 import TransactionDetails from "../screens/TransactionDetails";
 import Icon from "../components/Icon";
+import ChargeProgress from "../screens/ChargeProgress";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -145,6 +147,11 @@ const StackNavigator = () => {
       <Stack.Screen
         name="TransactionDetails"
         component={TransactionDetails}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ChargeProgress"
+        component={ChargeProgress}
         options={{ headerShown: false }}
       />
       <Stack.Group

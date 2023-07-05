@@ -5,7 +5,6 @@ import {
   StyleSheet,
   SafeAreaView,
   Pressable as RNPressable,
-  TouchableOpacity,
 } from "react-native";
 import { Text } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
@@ -99,7 +98,7 @@ const Charge = ({ navigation }) => {
           </View>
         </Pressable>
         <View style={{ marginHorizontal: 24 }}>
-          <Pressable>
+          <Pressable onPress={() => navigation.navigate('ChargeProgress')}>
             <View style={styles.primaryButton}>
               <Text style={styles.chargeText}>Charge ${paymentAmount}</Text>
             </View>
