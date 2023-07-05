@@ -5,6 +5,8 @@ import {
   View,
   KeyboardAvoidingView,
   Button as RNButton,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import { FloatingLabelInput } from "react-native-floating-label-input";
 import Checkbox from "expo-checkbox";
@@ -12,12 +14,15 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "../components/Button";
 import { signIn } from "../store/authSlice";
 import ErrorDropdown from "../components/ErrorDropdown";
+import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
 
 export default function LogIn({ navigation }) {
   const [merchantId, setMerchantId] = useState("");
   const [password, setPassword] = useState("");
   const [isChecked, setChecked] = useState(false);
+  const [checkboxFocused, setCheckboxFocused] = useState(false);
   const dispatch = useDispatch();
+
   const signInValue = useSelector((state) => state.auth.value);
   console.log("signInValue", signInValue);
 
@@ -29,40 +34,12 @@ export default function LogIn({ navigation }) {
     setError("Invalid Username or password.");
   };
 
-  function MyInput(params) {
-    const [isFocused, setIsFocused] = useState(false);
-
-    const containerStyles = {
-      borderWidth: 2,
-      paddingHorizontal: 16,
-      paddingVertical: 16,
-      backgroundColor: "#fff",
-      borderColor: isFocused ? "#28BE6D" : "rgba(29, 29, 29, 0.1)",
-      borderRadius: 8,
-    };
-    return (
-      <FloatingLabelInput
-        {...params}
-        animationDuration={100}
-        containerStyles={containerStyles}
-        selectionColor="#28BE6D"
-        isFocused={isFocused}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => setIsFocused(false)}
-        customLabelStyles={{
-          colorFocused: "rgba(29, 29, 29, 0.64)",
-          colorBlurred: "rgba(29, 29, 29, 0.64)",
-          fontSizeFocused: 12,
-        }}
-      />
-    );
-  }
-
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <Text
           style={{
@@ -76,19 +53,10 @@ export default function LogIn({ navigation }) {
         </Text>
         <View style={styles.content}>
           <View style={styles.input}>
-            <MyInput
-              label="Merchant ID"
-              value={merchantId}
-              onChangeText={setMerchantId}
-            />
+            <FloatingLabelTextInput label="Merchant ID"  />
           </View>
           <View style={styles.input}>
-            <MyInput
-              isPassword
-              label="Password"
-              value={password}
-              onChangeText={setPassword}
-            />
+            <FloatingLabelTextInput label="Password" icon={true} secureTextEntry={true} autoCapitalize="none" />
           </View>
           <View style={styles.forgotContainer}>
             <View
@@ -103,6 +71,8 @@ export default function LogIn({ navigation }) {
                 style={styles.checkbox}
                 value={isChecked}
                 onValueChange={setChecked}
+                onFocus={() => setCheckboxFocused(true)}
+                onBlur={() => setCheckboxFocused(false)}
               />
               <Text>Remember me</Text>
             </View>
@@ -121,34 +91,11 @@ export default function LogIn({ navigation }) {
             error={error}
           />
         )}
-
-        {/* <View
-          style={{
-            flex: 0.5,
-            alignItems: "center",
-            justifyContent: "flex-end",
-            backgroundColor: "yellow",
-          }}
-        >
-          <Text
-            style={{
-              fontFamily: "regular",
-              letterSpacing: 0.25,
-              lineHeight: 22,
-              textAlign: "center",
-              marginBottom: 80,
-              position: "absolute",
-              bottom: 0,
-            }}
-          >
-            SecurePay is a product of The OLB Group, Inc. Copyright 2022
-          </Text>
-        </View> */}
-
         <View style={styles.bottom}>
           <Button onPress={() => dispatch(signIn())} title="Sign In" />
         </View>
       </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 }

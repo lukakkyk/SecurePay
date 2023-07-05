@@ -4,11 +4,13 @@ import AddTip from "../screens/AddTip";
 import Settings from "../screens/Settings";
 import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createNativeStackNavigator, TransitionPresets } from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TransactionDetails from "../screens/TransactionDetails";
 import Icon from "../components/Icon";
 import ChargeProgress from "../screens/ChargeProgress";
-
+import ManuallyCard from "../screens/ManuallyCard";
+import Receipt from "../screens/Receipt";
+import Signature from "../screens/Signature";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -154,19 +156,34 @@ const StackNavigator = () => {
         component={ChargeProgress}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="ManuallyCard"
+        component={ManuallyCard}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Receipt"
+        component={Receipt}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Signature"
+        component={Signature}
+        options={{ headerShown: false }}
+      />
       <Stack.Group
         screenOptions={{
           presentation: "transparentModal",
-          animation: 'fade',
+          animation: "fade",
         }}
       >
         <Stack.Screen
           name="AddTip"
           component={AddTip}
           screenOptions={{
-           animationEnabled:false
+            animationEnabled: false,
           }}
-          options={{ headerShown: false,}}
+          options={{ headerShown: false }}
         />
       </Stack.Group>
     </Stack.Navigator>

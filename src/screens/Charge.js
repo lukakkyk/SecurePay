@@ -85,6 +85,7 @@ const Charge = ({ navigation }) => {
             color: "rgba(28, 28, 28, 0.98)",
             fontFamily: "medium",
             fontSize: 56,
+            paddingHorizontal:24
           }}
         >
           $ {paymentAmount}

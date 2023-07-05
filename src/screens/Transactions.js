@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Header from "../components/Header";
 import { AntDesign } from "@expo/vector-icons";
 import Search from "../components/Search";
@@ -11,6 +11,7 @@ import Icon from "../components/Icon";
 const Transactions = () => {
   return (
     <SafeAreaView style={styles.container}>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View>
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Transactions</Text>
@@ -33,6 +34,7 @@ const Transactions = () => {
           <Transaction />
         </ScrollView>
       </View>
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 };
