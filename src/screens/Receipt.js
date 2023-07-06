@@ -3,6 +3,8 @@ import { View, SafeAreaView, StyleSheet } from "react-native";
 import Header from "../components/Header";
 import { Text } from "react-native-paper";
 import Button from "../components/Button";
+import Icon from "../components/Icon";
+import Pressable from "../components/Pressable";
 const Section = ({ label, leftLabel }) => {
   return (
     <View style={styles.sectionContainer}>
@@ -20,7 +22,7 @@ const Section = ({ label, leftLabel }) => {
   );
 };
 
-const Receipt = ({navigation}) => {
+const Receipt = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <Header
@@ -41,9 +43,26 @@ const Receipt = ({navigation}) => {
         <Section label="Gratuty" leftLabel="$0.00" />
         <Section label="Charge" leftLabel="$78.54" />
       </View>
-      <View style={styles.aboveFooter}></View>
+      <View style={styles.aboveFooter}>
+        <View>
+          <Text style={styles.receiptEmail}>Email Receipt</Text>
+          <Text style={styles.userText}>testuser@securepay.com</Text>
+        </View>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <Icon name="right" iconColor="rgba(29, 29, 29, 0.84)" size={20} />
+        </View>   
+      </View>
+      <Pressable>
+      <View style={styles.smsReceipt}>
+        <Text style={styles.smsReceiptText}>Sms Receipt</Text>
+        <Icon name="right" iconColor="rgba(29, 29, 29, 0.84)" size={20} />
+      </View>
+      </Pressable>
       <View style={styles.bottom}>
-        <Button onPress={() => navigation.navigate('Signature')} title="Charge" />
+        <Button
+          onPress={() => navigation.navigate("ApprovedCharge")}
+          title="Charge"
+        />
       </View>
     </SafeAreaView>
   );
@@ -98,20 +117,55 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     letterSpacing: 0.25,
   },
-//   aboveFooter: {
-//     backgroundColor: "yellow",
-//     borderBottomColor:'green',
-//     borderBottomWidth:5,
-//     flex:1
-//   },
+  aboveFooter: {
+    backgroundColor: "#fff",
+    borderBottomColor: "green",
+    flexDirection: "row",
+    marginHorizontal: 24,
+    justifyContent: "space-between",
+    paddingBottom: 16,
+    paddingTop: 24,
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(29, 29, 29, 0.1)",
+  },
   bottom: {
     position: "absolute",
     left: 0,
     right: 0,
     bottom: 10,
-    padding: 24,
+    paddingHorizontal:24,
+    paddingTop:12,
+    paddingBottom:24,
     backgroundColor: "#fff",
+    borderTopColor:'rgba(29, 29, 29, 0.1)',
+    borderTopWidth:1
   },
+  receiptEmail: {
+    fontFamily: "medium",
+    fontSize: 14,
+    lineHeight: 24,
+    letterSpacing: 0.1,
+    color: "rgba(28, 28, 28, 0.98)",
+  },
+  userText: {
+    fontFamily: "regular",
+    lineHeight: 22,
+    letterSpacing: 0.25,
+    color: "rgba(29, 29, 29, 0.64)",
+  },
+  smsReceipt:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    paddingHorizontal:24,
+    marginTop:16
+    // backgroundColor:'blue'
+  },
+  smsReceiptText:{
+    fontFamily:'medium',
+    fontSize:14,
+    lineHeight:24,
+    letterSpacing:0.1
+  }
 });
 
 export default Receipt;

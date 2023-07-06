@@ -11,6 +11,8 @@ import ChargeProgress from "../screens/ChargeProgress";
 import ManuallyCard from "../screens/ManuallyCard";
 import Receipt from "../screens/Receipt";
 import Signature from "../screens/Signature";
+import ApprovedCharge from "../screens/ApprovedCharge";
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -169,6 +171,11 @@ const StackNavigator = () => {
       <Stack.Screen
         name="Signature"
         component={Signature}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ApprovedCharge"
+        component={ApprovedCharge}
         options={{ headerShown: false }}
       />
       <Stack.Group

@@ -24,7 +24,7 @@ const ChargeProgress = ({ navigation }) => {
             </Text>
           </View>
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Receipt")}>
+        <Pressable onPress={() => console.log('hello')}>
           <View style={[styles.manuallybutton, { flexDirection: "row" }]}>
             <Icon name="qr" iconColor="rgba(28, 28, 28, 0.98)" size={20} />
             <Text style={[styles.manuallyText, { marginLeft: 8 }]}>
