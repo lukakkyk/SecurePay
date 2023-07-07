@@ -19,6 +19,9 @@ const Charge = ({ navigation }) => {
     if (value === "delete") {
       // Handle backspace/delete logic
       setPaymentAmount(paymentAmount.slice(0, -1));
+    }
+    if (value === "C") {
+      setPaymentAmount("0.00");
     } else {
       const newPaymentAmount = paymentAmount + value;
       setPaymentAmount(newPaymentAmount);
@@ -37,6 +40,20 @@ const Charge = ({ navigation }) => {
           onPress={() => handleButtonPress(value)}
         >
           <Icon name="Delete" size={20} />
+        </RNPressable>
+      );
+    }
+    if (value === "C") {
+      return (
+        <RNPressable
+          key={value}
+          style={({ pressed }) => [
+            styles.button,
+            pressed && styles.buttonPressed, // Apply the pressed styles conditionally
+          ]}
+          onPress={() => handleButtonPress(value)}
+        >
+          <Text style={styles.buttonText}>{value}</Text>
         </RNPressable>
       );
     } else {
@@ -85,7 +102,7 @@ const Charge = ({ navigation }) => {
             color: "rgba(28, 28, 28, 0.98)",
             fontFamily: "medium",
             fontSize: 56,
-            paddingHorizontal:24
+            paddingHorizontal: 24,
           }}
         >
           $ {paymentAmount}
@@ -99,7 +116,7 @@ const Charge = ({ navigation }) => {
           </View>
         </Pressable>
         <View style={{ marginHorizontal: 24 }}>
-          <Pressable onPress={() => navigation.navigate('ChargeProgress')}>
+          <Pressable onPress={() => navigation.navigate("ChargeProgress")}>
             <View style={styles.primaryButton}>
               <Text style={styles.chargeText}>Charge ${paymentAmount}</Text>
             </View>
@@ -108,8 +125,8 @@ const Charge = ({ navigation }) => {
       </View>
       <View
         style={{
-          // backgroundColor: "#red",
-          // flex: 1,
+          // backgroundColor: "red",
+          flex: 1,
           marginTop: 40,
           justifyContent: "center",
           alignItems: "center",

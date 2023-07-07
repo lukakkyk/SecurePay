@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, Switch } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-
+import { Switch } from 'react-native-paper';
+import { Text } from 'react-native-paper';
 const SettingSwitch = ({ title, value, onValueChange}) => {
   return (
     <View style={styles.setting}>
@@ -10,6 +11,7 @@ const SettingSwitch = ({ title, value, onValueChange}) => {
         style={{ transform: [{ scaleX: 0.7 }, { scaleY: 0.7 }] }}
         onValueChange={onValueChange}
         value={value}
+        color="rgba(40, 190, 109, 1)"
       />
     </View>
   );
