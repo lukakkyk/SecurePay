@@ -37,6 +37,11 @@ const ManuallyCard = ({ navigation }) => {
         <View style={{ marginHorizontal: 24, marginVertical: 16 }}>
           <FloatingLabelTextInput label="Card holder" />
         </View>
+        <View style={styles.row}>
+          <FloatingLabelTextInput label='Date' style={styles.input} />
+          <FloatingLabelTextInput label='CVV' style={styles.input} />
+          <FloatingLabelTextInput label='Zip' style={styles.input} />
+        </View>
         <View style={styles.bottom}>
           <Button onPress={() => navigation.navigate("Receipt")} title="Next" />
         </View>
@@ -57,6 +62,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderTopColor: "rgba(29, 29, 29, 0.1)",
     borderTopWidth: 1,
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal:24
+  },
+  input: {
+    width: "30%", // Adjust the width as needed
   },
 });
 

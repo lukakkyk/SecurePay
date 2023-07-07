@@ -16,6 +16,23 @@ const ChargeProgress = ({ navigation }) => {
         />
       </View>
       <Text style={styles.swipeText}>Tap or Swipe your card</Text>
+      <View style={styles.cardContainer}>
+        <View style={styles.box}>
+          <Text></Text>
+        </View>
+        <View style={[styles.box, {marginLeft:6}]}>
+          <Text></Text>
+        </View>
+        <View style={[styles.box, {marginLeft:6}]}>
+          <Text></Text>
+        </View>
+        <View style={[styles.box, {marginLeft:6}]}>
+          <Text></Text>
+        </View>
+        <View style={[styles.box, {marginLeft:6}]}>
+          <Text></Text>
+        </View>
+      </View>
       <View style={styles.buttonsContainer}>
         <Pressable onPress={() => navigation.navigate("ManuallyCard")}>
           <View style={styles.manuallybutton}>
@@ -71,10 +88,9 @@ const styles = StyleSheet.create({
     letterSpacing: 0.4,
     color: "rgba(28, 28, 28, 0.98)",
     marginTop: 32,
+    marginBottom:38
   },
   buttonsContainer: {
-    // backgroundColor: "green",
-    // marginBottom:10,
     flex: 1,
     paddingHorizontal: 24,
     justifyContent: "center",
@@ -95,6 +111,17 @@ const styles = StyleSheet.create({
     fontFamily: "medium",
     color: "rgba(28, 28, 28, 0.98)",
   },
+  cardContainer:{
+    flexDirection:'row',
+    paddingHorizontal:48,
+  },
+  box:{
+    width:54,
+    height:37,
+    borderWidth:1,
+    borderRadius:6,
+    borderColor: "rgba(29, 29, 29, 0.1)",
+  }
 });
 
 export default ChargeProgress;

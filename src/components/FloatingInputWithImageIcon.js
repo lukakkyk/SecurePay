@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  View,
-  TextInput,
-  StyleSheet,
-  Animated,
-  Image,
-} from "react-native";
+import { View, TextInput, StyleSheet, Animated, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons"; // Assuming you are using Expo vector icons
 import Icon from "./Icon";
 import { Text } from "react-native-paper";
 
-const FloatingInputWithImageIcon = ({ label, imageSource, icon, containerStyle, ...props }) => {
+const FloatingInputWithImageIcon = ({
+  label,
+  imageSource,
+  icon,
+  containerStyle,
+  ...props
+}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const floatingAnimation = useRef(new Animated.Value(0)).current;
@@ -56,7 +56,7 @@ const FloatingInputWithImageIcon = ({ label, imageSource, icon, containerStyle, 
   };
 
   return (
-    <View style={[styles.formGroup ,{containerStyle}]}>
+    <View style={[styles.formGroup, { containerStyle }]}>
       <Animated.View style={[styles.inputContainer, inputBorderStyle]}>
         {imageSource && <Image source={imageSource} style={styles.image} />}
         <TextInput
@@ -67,7 +67,14 @@ const FloatingInputWithImageIcon = ({ label, imageSource, icon, containerStyle, 
           onBlur={handleBlur}
           {...props}
         />
-        {icon && <Icon name={icon} style={styles.icon} size={28} />}
+        {icon && (
+          <Icon
+            name={icon}
+            iconColor="rgba(29, 29, 29, 0.84)"
+            style={styles.icon}
+            size={28}
+          />
+        )}
       </Animated.View>
       <Animated.Text ref={labelRef} style={[styles.label, floatingLabelStyle]}>
         {label}
@@ -94,6 +101,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    fontSize: 14,
   },
   label: {
     position: "absolute",
@@ -101,7 +109,7 @@ const styles = StyleSheet.create({
     top: 20,
     color: "#888",
     opacity: 0.8,
-    fontFamily:'regular',
+    fontFamily: "regular",
   },
 });
 
