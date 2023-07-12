@@ -55,7 +55,10 @@ export default function LogIn({ navigation }) {
             </Text>
             <View style={{ paddingHorizontal: 24 }}>
               <View style={styles.input}>
-                <FloatingLabelTextInput label="Merchant ID" />
+                <FloatingLabelTextInput
+                  selectionColor="#28BE6D"
+                  label="Merchant ID"
+                />
               </View>
               <View style={styles.input}>
                 <FloatingLabelTextInput
@@ -63,6 +66,7 @@ export default function LogIn({ navigation }) {
                   icon={true}
                   secureTextEntry={true}
                   autoCapitalize="none"
+                  selectionColor="#28BE6D"
                 />
               </View>
               <View style={styles.forgotContainer}>
@@ -103,15 +107,19 @@ export default function LogIn({ navigation }) {
           />
         )} */}
           </View>
-          <View style={{ justifyContent: "flex-end" }}>
+          <View style={styles.bottom}>
             <View style={styles.bottomText}>
               <Text style={styles.bottomTextParagraph}>
                 SecurePay is a product of The OLB Group, Inc. Copyright 2022
               </Text>
             </View>
-          </View>
-          <View style={styles.bottom}>
-            <Button onPress={() => dispatch(signIn())} title="Sign In" />
+            <View style={{ borderTopColor: "rgba(29, 29, 29, 0.1)", borderTopWidth: 1, marginBottom:24 }}></View>
+            <View style={{marginHorizontal:24}}>
+              <Button
+                onPress={() => dispatch(signIn())}
+                title="Sign In"
+              />
+            </View>
           </View>
         </View>
       </TouchableWithoutFeedback>
@@ -129,14 +137,13 @@ const styles = StyleSheet.create({
   },
   bottom: {
     position: "absolute",
-    borderTopColor:'rgba(29, 29, 29, 0.05)',
-    borderTopWidth:1,
     left: 0,
     right: 0,
-    bottom: 0,
-    padding: 24,
+    bottom: 24,
+    paddingBottom: 12,
+    // paddingHorizontal:24,
     backgroundColor: "#fff",
-    // marginTop: 20, // Add this line or adjust the value as needed
+    flexDirection: "column",
   },
   forgotContainer: {
     flexDirection: "row",
@@ -150,20 +157,23 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     backgroundColor: "#fff",
-    justifyContent: "flex-end",
     alignItems: "center",
-    height: 425,
-    paddingBottom:25,
-    
+    justifyContent:'center',
+    marginBottom: 25,
+    textAlign:'center',
+    height:32,
+    width:266,
+    alignSelf:'center'
   },
+
   bottomTextParagraph: {
     lineHeight: 22,
-    letterSpacing: 0.22,
+    letterSpacing: 0.4,
     textAlign: "center",
-    paddingHorizontal:24,
-    fontSize: 14,
-    fontFamily:'regular',
+    // paddingHorizontal: 100,
+    fontSize: 12,
+    fontFamily: "regular",
     color: "rgba(15, 15, 15, 0.98)",
-    
+    lineHeight:16,
   },
 });

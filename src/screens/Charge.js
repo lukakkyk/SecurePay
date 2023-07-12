@@ -12,19 +12,16 @@ import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
 
 const Charge = ({ navigation }) => {
-  // const [inputValue, setInputValue] = useState("0.00");
   const [paymentAmount, setPaymentAmount] = useState("0.00");
 
   const handleButtonPress = (value) => {
     if (value === "delete") {
-      // Handle backspace/delete logic
-      setPaymentAmount(paymentAmount.slice(0, -1));
-    }
-    if (value === "C") {
+      setPaymentAmount("0.00");
+    } else if (value === "C") {
       setPaymentAmount("0.00");
     } else {
-      const newPaymentAmount = paymentAmount + value;
-      setPaymentAmount(newPaymentAmount);
+      const newPaymentAmount = parseFloat(paymentAmount) + parseFloat(value);
+      setPaymentAmount(newPaymentAmount.toFixed(2));
     }
   };
 
@@ -109,25 +106,31 @@ const Charge = ({ navigation }) => {
         </RN>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
-        <Pressable onPress={() => navigation.navigate("AddTip")}>
+        <Pressable onPress={() => console.log("hello")}>
           <View style={styles.outlineButton}>
             <Icon name="edit" iconColor="#E2B338" size={16} />
             <Text style={styles.noteText}>Add Note</Text>
           </View>
         </Pressable>
         <View style={{ marginHorizontal: 24 }}>
-          <Pressable onPress={() => navigation.navigate("ChargeProgress")}>
+          <Pressable onPress={() => navigation.navigate("AddTip")}>
             <View style={styles.primaryButton}>
-              <Text style={styles.chargeText}>Charge ${paymentAmount}</Text>
+              <Text
+                adjustsFontSizeToFit={true}
+                numberOfLines={1}
+                style={styles.chargeText}
+              >
+                Charge ${paymentAmount}
+              </Text>
             </View>
           </Pressable>
         </View>
       </View>
       <View
         style={{
-          // backgroundColor: "red",
+          backgroundColor: "#fff",
           flex: 1,
-          marginTop: 40,
+          marginTop: 60,
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 24,
@@ -151,7 +154,6 @@ const Charge = ({ navigation }) => {
         <View style={styles.row}>
           {renderButton("C")}
           {renderButton(0)}
-
           {renderButton("delete")}
         </View>
       </View>

@@ -5,9 +5,10 @@ import { View, StyleSheet, Text, Pressable } from "react-native";
 import Box from "../components/Box";
 // import Pressable from "../components/Pressable";
 
-const TipComponent = ({ title, amount, amountStyle }) => {
+const TipComponent = ({ title, amount, amountStyle, onPress }) => {
   return (
     <Pressable
+      onPress={onPress}
       style={({ pressed }) => [
         styles.button,
         pressed && styles.buttonPressed, // Apply the pressed styles conditionally
@@ -38,11 +39,18 @@ const TipComponent = ({ title, amount, amountStyle }) => {
   );
 };
 
-function BottomSheetComponent({ children, size = 550, style }) {
+function BottomSheetComponent({ children, size = 550, style, navigation }) {
   // const { t } = useTranslation();
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   const bottomSheetRef = useRef(null);
   const snapPoints = useMemo(() => [size]);
+
+  const navigationAnother = () => {
+    setTimeout(() => {
+      navigation.goBack()
+      navigation.navigate("ChargeProgress");
+    }, 2500);
+  };
 
   useEffect(() => {
     bottomSheetRef?.current?.open?.();
@@ -102,7 +110,11 @@ function BottomSheetComponent({ children, size = 550, style }) {
             </Pressable>
           </View>
 
-          <TipComponent title="No Tip" amount="$0.00" />
+          <TipComponent
+            onPress={navigationAnother}
+            title="No Tip"
+            amount="$0.00"
+          />
           <TipComponent title="10%" amount="$1.20" />
           <TipComponent title="15%" amount="$2.25" />
           <TipComponent title="20%" amount="$5.30" />

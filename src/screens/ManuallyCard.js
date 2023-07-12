@@ -31,16 +31,29 @@ const ManuallyCard = ({ navigation }) => {
             containerStyle={{ marginTop: 100 }}
             label="Card Number"
             icon="payment"
+            selectionColor="#28BE6D"
             imageSource={require("../../assets/Mastercard.png")}
           />
         </View>
         <View style={{ marginHorizontal: 24, marginVertical: 16 }}>
-          <FloatingLabelTextInput label="Card holder" />
+          <FloatingLabelTextInput selectionColor='#28BE6D' label="Card holder" />
         </View>
         <View style={styles.row}>
-          <FloatingLabelTextInput label='Date' style={styles.input} />
-          <FloatingLabelTextInput label='CVV' style={styles.input} />
-          <FloatingLabelTextInput label='Zip' style={styles.input} />
+          <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="Date"
+            style={styles.input}
+          />
+          <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="CVV"
+            style={styles.input}
+          />
+          <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="Zip"
+            style={styles.input}
+          />
         </View>
         <View style={styles.bottom}>
           <Button onPress={() => navigation.navigate("Receipt")} title="Next" />
@@ -67,7 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-    paddingHorizontal:24
+    paddingHorizontal: 24,
   },
   input: {
     width: "30%", // Adjust the width as needed

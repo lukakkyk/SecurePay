@@ -18,7 +18,7 @@ const Header = ({
         <Pressable onPress={onLeftPress}>
           {iconLeft && (
             <View style={styles.leftIcon}>
-              <Icon name="left" size={20} iconColor="rgba(28, 28, 28, 0.98)" />
+              <Icon name="left" size={25} iconColor="rgba(28, 28, 28, 0.98)" />
             </View>
           )}
         </Pressable>
