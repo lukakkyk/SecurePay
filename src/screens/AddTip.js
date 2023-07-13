@@ -40,28 +40,23 @@ const TipComponent = ({ title, amount, amountStyle, onPress }) => {
 };
 
 function BottomSheetComponent({ children, size = 550, style, navigation }) {
-  // const { t } = useTranslation();
   // const navigation = useNavigation();
   const bottomSheetRef = useRef(null);
   const snapPoints = useMemo(() => [size]);
 
   const navigationAnother = () => {
-    setTimeout(() => {
-      navigation.goBack()
-      navigation.navigate("ChargeProgress");
-    }, 2500);
+    // bottomSheetRef.current?.close();
+    navigation.navigate("ChargeProgress");
   };
 
-  useEffect(() => {
-    bottomSheetRef?.current?.open?.();
-  });
+  
 
   return (
     <View style={styles.container}>
       <Pressable
         style={{ flex: 1, backgroundColor: "transparent" }}
         onPress={() => {
-          navigation.goBack();
+          bottomSheetRef?.current?.close?.();
         }}
       />
       <BottomSheet
@@ -76,7 +71,6 @@ function BottomSheetComponent({ children, size = 550, style, navigation }) {
         backgroundStyle={{ backgroundColor: "transparent" }}
         enablePanDownToClose={true}
         android_keyboardInputMode="adjustResize"
-        // style={{backgroundColor:'red'}}
       >
         <Box noMargins noPaddings containerStyle={[styles.box, style]}>
           <View
@@ -101,7 +95,7 @@ function BottomSheetComponent({ children, size = 550, style, navigation }) {
             >
               Add Tip
             </Text>
-            <Pressable onPress={() => navigation.navigate("Home")}>
+            <Pressable onPress={() => bottomSheetRef?.current?.close?.()}>
               <Text
                 style={{ fontFamily: "medium", fontSize: 14, lineHeight: 20 }}
               >
@@ -125,7 +119,6 @@ function BottomSheetComponent({ children, size = 550, style, navigation }) {
           />
 
           <View>{children}</View>
-          {/* <View><Text>hello</Text></View> */}
         </Box>
       </BottomSheet>
     </View>

@@ -74,7 +74,7 @@ const Charge = ({ navigation }) => {
       <Text style={styles.title}>Current Sale</Text>
       <View
         style={{
-          backgroundColor: "#fff",
+          // backgroundColor: "red",
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
@@ -106,7 +106,7 @@ const Charge = ({ navigation }) => {
         </RN>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
-        <Pressable onPress={() => console.log("hello")}>
+        <Pressable onPress={() => navigation.navigate("CustomTip")}>
           <View style={styles.outlineButton}>
             <Icon name="edit" iconColor="#E2B338" size={16} />
             <Text style={styles.noteText}>Add Note</Text>

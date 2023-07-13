@@ -36,7 +36,10 @@ const ManuallyCard = ({ navigation }) => {
           />
         </View>
         <View style={{ marginHorizontal: 24, marginVertical: 16 }}>
-          <FloatingLabelTextInput selectionColor='#28BE6D' label="Card holder" />
+          <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="Card holder"
+          />
         </View>
         <View style={styles.row}>
           <FloatingLabelTextInput
@@ -83,7 +86,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   input: {
-    width: "30%", // Adjust the width as needed
+    width: "31.5%", // Adjust the width as needed,
+    // backgroundColor:'red'
   },
 });
 

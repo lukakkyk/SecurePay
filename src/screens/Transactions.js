@@ -1,7 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableWithoutFeedback, Keyboard } from "react-native";
-import Header from "../components/Header";
-import { AntDesign } from "@expo/vector-icons";
 import Search from "../components/Search";
 import Transaction from "../components/Transaction";
 import TransactionSuccess from "../components/TransactionSuccess";
@@ -15,9 +13,11 @@ const Transactions = () => {
       <View>
         <View style={styles.headerContainer}>
           <Text style={styles.title}>Transactions</Text>
-          <Icon style={{ marginTop: 10 }} name="Callendar" size={20} />
+          <Icon style={{ marginTop: 10 }} name="Callendar" size={23} />
         </View>
-        <Search inputStyle={{ marginTop: 26 }} />
+        <View style={{backgroundColor:'#fff', paddingBottom:16, marginTop:16}}>
+        <Search />
+        </View>
         <ScrollView
           contentContainerStyle={{ paddingBottom: 90 }}
           showsVerticalScrollIndicator={false}
@@ -26,12 +26,12 @@ const Transactions = () => {
           <TransactionSuccess />
           <TransactionDeclined />
           <TransactionRefunded />
-          <Transaction />
-          <Transaction />
+          {/* <Transaction />
+          <Transaction /> */}
           <TransactionSuccess />
           <TransactionDeclined />
           <TransactionRefunded />
-          <Transaction />
+          {/* <Transaction style={{marginTop:16}}  /> */}
         </ScrollView>
       </View>
       </TouchableWithoutFeedback>
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   title: {
-    // marginHorizontal: 20,
     marginTop: 10,
     color: "rgba(28, 28, 28, 0.98)",
     fontSize: 16,

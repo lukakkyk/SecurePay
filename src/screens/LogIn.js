@@ -14,6 +14,7 @@ import Button from "../components/Button";
 import { signIn } from "../store/authSlice";
 import ErrorDropdown from "../components/ErrorDropdown";
 import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
+import Pressable from "../components/Pressable";
 
 export default function LogIn({ navigation }) {
   const [merchantId, setMerchantId] = useState("");
@@ -23,14 +24,10 @@ export default function LogIn({ navigation }) {
   const dispatch = useDispatch();
 
   const signInValue = useSelector((state) => state.auth.value);
-  console.log("signInValue", signInValue);
-
-  const [error, setError] = useState("");
-  const [errorDropDownAlert, setErrorDropDownAlert] = useState(false);
-
-  const simulateError = () => {
-    setErrorDropDownAlert(true);
-    setError("Invalid Username or password.");
+  
+  
+  const handleCheckboxToggle = () => {
+    setChecked(!isChecked);
   };
 
   return (
@@ -58,6 +55,8 @@ export default function LogIn({ navigation }) {
                 <FloatingLabelTextInput
                   selectionColor="#28BE6D"
                   label="Merchant ID"
+                  value={merchantId}
+                  onChangeText={setMerchantId}
                 />
               </View>
               <View style={styles.input}>
@@ -67,6 +66,8 @@ export default function LogIn({ navigation }) {
                   secureTextEntry={true}
                   autoCapitalize="none"
                   selectionColor="#28BE6D"
+                  value={password}
+                  onChangeText={setPassword}
                 />
               </View>
               <View style={styles.forgotContainer}>
@@ -85,7 +86,9 @@ export default function LogIn({ navigation }) {
                     onFocus={() => setCheckboxFocused(true)}
                     onBlur={() => setCheckboxFocused(false)}
                   />
-                  <Text>Remember me</Text>
+                  <Pressable onPress={handleCheckboxToggle}>
+                    <Text>Remember me</Text>
+                  </Pressable>
                 </View>
                 <Text
                   onPress={() => navigation.navigate("ForgotPassword")}
@@ -99,13 +102,6 @@ export default function LogIn({ navigation }) {
                 </Text>
               </View>
             </View>
-            {/* <RNButton title="Simulate Error" onPress={simulateError} /> */}
-            {/* {errorDropDownAlert && (
-          <ErrorDropdown
-            errorDropDownAlert={errorDropDownAlert}
-            error={error}
-          />
-        )} */}
           </View>
           <View style={styles.bottom}>
             <View style={styles.bottomText}>
@@ -113,12 +109,15 @@ export default function LogIn({ navigation }) {
                 SecurePay is a product of The OLB Group, Inc. Copyright 2022
               </Text>
             </View>
-            <View style={{ borderTopColor: "rgba(29, 29, 29, 0.1)", borderTopWidth: 1, marginBottom:24 }}></View>
-            <View style={{marginHorizontal:24}}>
-              <Button
-                onPress={() => dispatch(signIn())}
-                title="Sign In"
-              />
+            <View
+              style={{
+                borderTopColor: "rgba(29, 29, 29, 0.1)",
+                borderTopWidth: 1,
+                marginBottom: 24,
+              }}
+            />
+            <View style={{ marginHorizontal: 24 }}>
+              <Button onPress={() => dispatch(signIn())} title="Sign In" />
             </View>
           </View>
         </View>
@@ -158,12 +157,12 @@ const styles = StyleSheet.create({
   bottomText: {
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent:'center',
+    justifyContent: "center",
     marginBottom: 25,
-    textAlign:'center',
-    height:32,
-    width:266,
-    alignSelf:'center'
+    textAlign: "center",
+    height: 32,
+    width: 266,
+    alignSelf: "center",
   },
 
   bottomTextParagraph: {
@@ -174,6 +173,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: "regular",
     color: "rgba(15, 15, 15, 0.98)",
-    lineHeight:16,
+    lineHeight: 16,
   },
 });

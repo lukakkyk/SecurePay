@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Pressable from "./Pressable";
-const Transaction = () => {
+const Transaction = ({style}) => {
   return (
     <Pressable>
-      <View style={styles.transaction}>
+      <View style={[styles.transaction, {style}]}>
         <View style={styles.line}>
           <Text style={styles.numberText}># 18793</Text>
           <Text style={styles.moneyText}>$78.54</Text>
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   transaction: {
     flexDirection: "column",
     marginHorizontal: 24,
-    marginTop: 17,
+    marginTop: 0,
   },
   line: {
     flexDirection: "row",

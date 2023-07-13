@@ -10,6 +10,7 @@ import Header from "../components/Header";
 import Title from "../components/Title";
 import { FloatingLabelInput } from "react-native-floating-label-input";
 import Button from "../components/Button";
+import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
 
 function MyInput(params) {
   const [isFocused, setIsFocused] = useState(false);
@@ -23,39 +24,40 @@ function MyInput(params) {
     borderRadius: 8,
     marginHorizontal: 24,
     marginTop: 8,
-
   };
   return (
     <FloatingLabelInput
       {...params}
       animationDuration={100}
       customLabelStyles={{
-        colorFocused: 'rgba(29, 29, 29, 0.64)',
-        colorBlurred:'rgba(29, 29, 29, 0.64)',
+        colorFocused: "rgba(29, 29, 29, 0.64)",
+        colorBlurred: "rgba(29, 29, 29, 0.64)",
         fontSizeFocused: 12,
       }}
       containerStyles={containerStyles}
       isFocused={isFocused}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
-
     />
   );
 }
 
 const ForgotPassword = ({ navigation }) => {
-    const [securePay, setSecurePay] = useState('');
-    const [email, setEmail] = useState('')
+  const [securePay, setSecurePay] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
       <View style={{ backgroundColor: "#fff", flex: 1 }}>
-        <Header
-          onRightPress={() => navigation.goBack()}
+      <Header
+          iconLeft={true}
+          title="Manually"
+          onLeftPress={() => navigation.goBack()}
           iconRight={true}
-          title="Forgot Password"
+          rightIconName="qr"
+          rightIconColor="#fff"
         />
         <Title style={{ marginTop: 41 }} title="Recovery" />
 
@@ -63,8 +65,16 @@ const ForgotPassword = ({ navigation }) => {
           We will sent an password recovery email to your email.
         </Text>
         <View style={styles.content}>
-          <MyInput value={securePay} onChangeText={setSecurePay} style={styles.input} label="Securepay ID" />
-          <MyInput value={email} onChangeText={setEmail} style={styles.input} label="Email" />
+          <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="Securepay ID"
+            style={{marginBottom:16}}
+          />
+         <FloatingLabelTextInput
+            selectionColor="#28BE6D"
+            label="Email"
+            keyboardType="email-address" 
+          />
         </View>
 
         <View style={styles.bottom}>
@@ -88,10 +98,11 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   content: {
-    marginTop: 24,
+    marginTop: 16,
     alignItems: "stretch",
     justifyContent: "center",
     flexDirection: "column",
+    paddingHorizontal:24
   },
   input: {
     marginTop: 24,
@@ -100,8 +111,10 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 12,
     padding: 24,
+    borderTopColor:'rgba(29, 29, 29, 0.1)',
+    borderTopWidth:1
   },
   container: {
     flex: 1,

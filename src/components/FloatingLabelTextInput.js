@@ -66,10 +66,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     borderRadius: 8,
     // paddingVertical: 18,
-    paddingHorizontal: 16,
+    paddingLeft: 16,
+    paddingTop:15,
     width:'100%',
     height:56,
-    paddingTop:14
+    // paddingTop:10
   },
   inputFocus: {
     borderColor: "rgba(40, 190, 109, 1)",

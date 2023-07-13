@@ -12,37 +12,10 @@ import ManuallyCard from "../screens/ManuallyCard";
 import Receipt from "../screens/Receipt";
 import Signature from "../screens/Signature";
 import ApprovedCharge from "../screens/ApprovedCharge";
-
+import CustomTip from "../screens/CustomTip";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const CustomTabItem = ({ iconName, tabName, iconColor }) => {
-  return (
-    <View
-      style={{
-        backgroundColor: "#fff",
-        width: 130,
-        height: 64,
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Icon name={iconName} iconColor={iconColor} size={20} />
-      <Text
-        style={{
-          fontFamily: "bold",
-          fontSize: 10,
-          lineHeight: 14,
-          paddingTop: 7,
-        }}
-      >
-        {tabName}
-      </Text>
-    </View>
-  );
-};
 
 const TabNavigator = () => {
   return (
@@ -52,13 +25,6 @@ const TabNavigator = () => {
           paddingBottom: 30,
           borderTopColor: "#1D1D1D0D",
           borderTopWidth: 1,
-        },
-        tabBarItemStyle: {
-          // backgroundColor: "purple",
-          // height:1000,
-          // marginBottom:20
-          // borderTopColor: "green",
-          // borderTopWidth: 1,
         },
         headerTitle: "",
         headerShadowVisible: false,
@@ -153,7 +119,35 @@ const StackNavigator = () => {
         component={TransactionDetails}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
+        name="ChargeProgress"
+        component={ChargeProgress}
+        options={{ headerShown: false }}
+      />  */}
+      
+      <Stack.Group
+        screenOptions={{
+          presentation: "transparentModal",
+          animation: "fade",
+        }}
+      >
+        <Stack.Screen
+          name="AddTip"
+          component={AddTip}
+          screenOptions={{
+            animationEnabled: false,
+          }}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="CustomTip"
+          component={CustomTip}
+          screenOptions={{
+            animationEnabled: false,
+          }}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
         name="ChargeProgress"
         component={ChargeProgress}
         options={{ headerShown: false }}
@@ -178,20 +172,6 @@ const StackNavigator = () => {
         component={ApprovedCharge}
         options={{ headerShown: false }}
       />
-      <Stack.Group
-        screenOptions={{
-          presentation: "transparentModal",
-          animation: "fade",
-        }}
-      >
-        <Stack.Screen
-          name="AddTip"
-          component={AddTip}
-          screenOptions={{
-            animationEnabled: false,
-          }}
-          options={{ headerShown: false }}
-        />
       </Stack.Group>
     </Stack.Navigator>
   );

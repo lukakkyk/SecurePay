@@ -50,7 +50,7 @@ const PasswordRecovery = ({ navigation }) => {
           Password recovery link has been sent on mail
         </Text>
         <Text style={styles.mail}>zura@slick.studio</Text>
-        <View style={{ flexDirection: "row", marginTop: 47 }}>
+        <View style={{ flexDirection: "row", marginTop: 47, alignItems:'center' }}>
           <Text style={styles.receive}>Didn’t receive ?</Text>
           <Pressable>
             <Text style={styles.resend}> Resend</Text>
