@@ -64,6 +64,7 @@ const AddTip = ({ size = 350, navigation }) => {
             <BottomSheetTextInput
               keyboardType="number-pad"
               placeholder="Enter Text"
+              selectionColor="#28BE6D"
               onFocus={handleFocus}
               onBlur={handleBlur}
               multiline={true}

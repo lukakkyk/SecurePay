@@ -96,8 +96,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginRight: 10,
-    width: 16,
-    height: 16,
+    width: 24,
+    height: 14.83,
   },
   input: {
     flex: 1,
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
   label: {
     position: "absolute",
-    left: 50,
+    left: 60,
     top: 20,
     color: "#888",
     opacity: 0.8,

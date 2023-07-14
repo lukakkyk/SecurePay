@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, TextInput, Text, StyleSheet, Animated } from "react-native";
 
-const FloatingLabelTextInput = ({ label, style, ...props }) => {
+const FloatingLabelTextInput = ({ label, style, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const floatingAnimation = useRef(new Animated.Value(0)).current;
@@ -31,7 +31,7 @@ const FloatingLabelTextInput = ({ label, style, ...props }) => {
       {
         translateY: floatingAnimation.interpolate({
           inputRange: [0, 1],
-          outputRange: [0, -15],
+          outputRange: [0, -10],
         }),
       },
     ],
@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#888",
     opacity: 0.8,
+    fontFamily:'regular'
   },
 });
 

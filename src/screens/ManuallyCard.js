@@ -32,7 +32,7 @@ const ManuallyCard = ({ navigation }) => {
             label="Card Number"
             icon="payment"
             selectionColor="#28BE6D"
-            imageSource={require("../../assets/Mastercard.png")}
+            imageSource={require("../../assets/images/mastercard.png")}
           />
         </View>
         <View style={{ marginHorizontal: 24, marginVertical: 16 }}>

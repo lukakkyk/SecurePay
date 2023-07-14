@@ -17,8 +17,8 @@ import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
 import Pressable from "../components/Pressable";
 
 export default function LogIn({ navigation }) {
-  const [merchantId, setMerchantId] = useState("");
-  const [password, setPassword] = useState("");
+  // const [merchantId, setMerchantId] = useState("");
+  // const [password, setPassword] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [checkboxFocused, setCheckboxFocused] = useState(false);
   const dispatch = useDispatch();
@@ -55,8 +55,8 @@ export default function LogIn({ navigation }) {
                 <FloatingLabelTextInput
                   selectionColor="#28BE6D"
                   label="Merchant ID"
-                  value={merchantId}
-                  onChangeText={setMerchantId}
+                  // value={merchantId}
+                  // onChangeText={setMerchantId}
                 />
               </View>
               <View style={styles.input}>
@@ -66,8 +66,8 @@ export default function LogIn({ navigation }) {
                   secureTextEntry={true}
                   autoCapitalize="none"
                   selectionColor="#28BE6D"
-                  value={password}
-                  onChangeText={setPassword}
+                  // value={password}
+                  // onChangeText={setPassword}
                 />
               </View>
               <View style={styles.forgotContainer}>

@@ -18,19 +18,23 @@ const ChargeProgress = ({ navigation }) => {
       <Text style={styles.swipeText}>Tap or Swipe your card</Text>
       <View style={styles.cardContainer}>
         <View style={styles.box}>
-          <Text></Text>
+          <Image style={{width:40, height:13}} source={require('../../assets/images/visalogo.png')} />
         </View>
         <View style={[styles.box, {marginLeft:6}]}>
-          <Text></Text>
+        <Image style={{width:34.69, height:20.66}} source={require('../../assets/images/mastercard.png')} />
+
         </View>
         <View style={[styles.box, {marginLeft:6}]}>
-          <Text></Text>
+        <Image style={{width:47.07, height:16.92}} source={require('../../assets/images/americanexpress.png')} />
+
         </View>
         <View style={[styles.box, {marginLeft:6}]}>
-          <Text></Text>
+        <Image style={{width:44.04, height:7.71}} source={require('../../assets/images/discover.png')} />
+
         </View>
         <View style={[styles.box, {marginLeft:6}]}>
-          <Text></Text>
+        <Image style={{width:39.1, height:16.06}} source={require('../../assets/images/applepay.png')} />
+
         </View>
       </View>
       <View style={styles.buttonsContainer}>
@@ -121,6 +125,10 @@ const styles = StyleSheet.create({
     borderWidth:1,
     borderRadius:6,
     borderColor: "rgba(29, 29, 29, 0.1)",
+    alignItems:'center',
+    justifyContent:'center',
+    padding:10
+    // backgroundColor:'blue'
   }
 });
 
