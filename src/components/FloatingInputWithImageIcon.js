@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, TextInput, StyleSheet, Animated, Image } from "react-native";
-import { FontAwesome } from "@expo/vector-icons"; // Assuming you are using Expo vector icons
 import Icon from "./Icon";
-import { Text } from "react-native-paper";
-
 const FloatingInputWithImageIcon = ({
   label,
   imageSource,

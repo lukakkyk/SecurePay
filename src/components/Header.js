@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
-import { AntDesign, Octicons } from "@expo/vector-icons";
+import { View, StyleSheet, SafeAreaView } from "react-native";
+import { Text } from "react-native-paper";
 import Icon from "./Icon";
 import Pressable from "./Pressable";
 const Header = ({
@@ -18,7 +18,7 @@ const Header = ({
         <Pressable onPress={onLeftPress}>
           {iconLeft && (
             <View style={styles.leftIcon}>
-              <Icon name="left" size={23} iconColor="rgba(28, 28, 28, 0.98)" />
+              <Icon name="left" size={25} iconColor="rgba(28, 28, 28, 0.98)" />
             </View>
           )}
         </Pressable>

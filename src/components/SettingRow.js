@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
 import Icon from "./Icon";
 import { Text } from 'react-native-paper';
 const SettingRow = ({ title, pressable }) => {

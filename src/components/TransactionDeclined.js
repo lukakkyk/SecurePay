@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Pressable from "./Pressable";
+import { Text } from "react-native-paper";
 const TransactionDeclined = () => {
   return (
     <Pressable>

@@ -1,9 +1,9 @@
 import BottomSheet from "@gorhom/bottom-sheet";
-import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useRef, useMemo } from "react";
-import { View, StyleSheet, Text, Pressable } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import Box from "../components/Box";
-// import Pressable from "../components/Pressable";
+import { Text } from "react-native-paper";
+
 
 const TipComponent = ({ title, amount, amountStyle, onPress }) => {
   return (

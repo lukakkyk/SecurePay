@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { ScrollView, Text, StyleSheet, SafeAreaView, View } from "react-native";
+import { ScrollView, StyleSheet, SafeAreaView, View } from "react-native";
 import SettingRow from "../components/SettingRow";
 import SettingSwitch from "../components/SettingSwitch";
 import { MaterialIcons } from "@expo/vector-icons";
 import Pressable from "../components/Pressable";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { signOut } from "../store/authSlice";
+import { Text } from "react-native-paper";
 
 const Settings = () => {
   const [signature, setSignature] = useState(true);

@@ -2,7 +2,7 @@ import Charge from "../screens/Charge";
 import Transactions from "../screens/Transactions";
 import AddTip from "../screens/AddTip";
 import Settings from "../screens/Settings";
-import { Text, View } from "react-native";
+import { Text } from "react-native-paper";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TransactionDetails from "../screens/TransactionDetails";
@@ -118,13 +118,7 @@ const StackNavigator = () => {
         name="TransactionDetails"
         component={TransactionDetails}
         options={{ headerShown: false }}
-      />
-      {/* <Stack.Screen
-        name="ChargeProgress"
-        component={ChargeProgress}
-        options={{ headerShown: false }}
-      />  */}
-      
+      /> 
       <Stack.Group
         screenOptions={{
           presentation: "transparentModal",

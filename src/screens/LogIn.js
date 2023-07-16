@@ -1,10 +1,8 @@
 import { useState } from "react";
 import {
   StyleSheet,
-  Text,
   View,
   KeyboardAvoidingView,
-  Button as RNButton,
   TouchableWithoutFeedback,
   Keyboard,
 } from "react-native";
@@ -12,13 +10,12 @@ import Checkbox from "expo-checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "../components/Button";
 import { signIn } from "../store/authSlice";
-import ErrorDropdown from "../components/ErrorDropdown";
 import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
 import Pressable from "../components/Pressable";
+import { Text } from "react-native-paper";
 
 export default function LogIn({ navigation }) {
-  // const [merchantId, setMerchantId] = useState("");
-  // const [password, setPassword] = useState("");
+
   const [isChecked, setChecked] = useState(false);
   const [checkboxFocused, setCheckboxFocused] = useState(false);
   const dispatch = useDispatch();

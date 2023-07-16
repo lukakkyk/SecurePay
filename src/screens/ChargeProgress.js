@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
+import { View, StyleSheet, SafeAreaView, Image } from "react-native";
 import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
+import { Text } from "react-native-paper";
 const ChargeProgress = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>

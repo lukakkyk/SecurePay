@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { Animated, StyleSheet, Text, View } from "react-native";
+import { Animated, StyleSheet, View } from "react-native";
 import Icon from "./Icon";
+import { Text } from "react-native-paper";
 const ErrorDropdown = ({ error , errorDropDownAlert}) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 

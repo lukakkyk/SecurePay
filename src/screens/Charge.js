@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import {
   View,
-  Text as RN,
   StyleSheet,
   SafeAreaView,
   Pressable as RNPressable,
 } from "react-native";
 import { Text } from "react-native-paper";
-import { Ionicons } from "@expo/vector-icons";
 import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
 
@@ -83,7 +81,7 @@ const Charge = ({ navigation }) => {
           lineHeight: 24,
         }}
       >
-        <RN
+        <Text
           style={{
             color: "rgba(29, 29, 29, 0.4)",
             fontSize: 14,
@@ -91,8 +89,8 @@ const Charge = ({ navigation }) => {
           }}
         >
           Enter Amount
-        </RN>
-        <RN
+        </Text>
+        <Text
           adjustsFontSizeToFit={true}
           numberOfLines={1}
           style={{
@@ -103,7 +101,7 @@ const Charge = ({ navigation }) => {
           }}
         >
           $ {paymentAmount}
-        </RN>
+        </Text>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
         <Pressable onPress={() => navigation.navigate("CustomTip")}>

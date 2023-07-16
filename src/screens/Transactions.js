@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import Search from "../components/Search";
 import Transaction from "../components/Transaction";
 import TransactionSuccess from "../components/TransactionSuccess";
 import TransactionDeclined from "../components/TransactionDeclined";
 import TransactionRefunded from "../components/TransactionRefunded";
+import { Text } from "react-native-paper";
 import Icon from "../components/Icon";
 const Transactions = () => {
   return (
@@ -26,12 +27,9 @@ const Transactions = () => {
           <TransactionSuccess />
           <TransactionDeclined />
           <TransactionRefunded />
-          {/* <Transaction />
-          <Transaction /> */}
           <TransactionSuccess />
           <TransactionDeclined />
           <TransactionRefunded />
-          {/* <Transaction style={{marginTop:16}}  /> */}
         </ScrollView>
       </View>
       </TouchableWithoutFeedback>

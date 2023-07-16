@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
 import { Switch } from 'react-native-paper';
 import { Text } from 'react-native-paper';
 const SettingSwitch = ({ title, value, onValueChange}) => {

@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import Pressable from "./Pressable";
+import { Text } from "react-native-paper";
 const TransactionSuccess = () => {
   return (
     <Pressable>
@@ -66,8 +67,8 @@ const styles = StyleSheet.create({
     fontFamily: "regular",
     fontSize: 12,
     lineHeight: 16,
-    color:'#17854A',
-    letterSpacing:0.4
+    color: "#17854A",
+    letterSpacing: 0.4,
   },
 });
 

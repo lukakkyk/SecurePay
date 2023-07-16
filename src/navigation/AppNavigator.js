@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const AppNavigator = (props) => {
   const signInValue = useSelector((state) => state.auth.value);
-  console.log("signInValue", signInValue);
+  
   return (
     <>
       <NavigationContainer>

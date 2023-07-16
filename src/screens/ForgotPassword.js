@@ -1,50 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Text,
   StyleSheet,
   View,
-  TouchableHighlight,
   KeyboardAvoidingView,
 } from "react-native";
 import Header from "../components/Header";
 import Title from "../components/Title";
-import { FloatingLabelInput } from "react-native-floating-label-input";
 import Button from "../components/Button";
+import { Text } from "react-native-paper";
 import FloatingLabelTextInput from "../components/FloatingLabelTextInput";
 
-function MyInput(params) {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const containerStyles = {
-    borderWidth: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-    backgroundColor: "#fff",
-    borderColor: isFocused ? "#28BE6D" : "rgba(29, 29, 29, 0.1)",
-    borderRadius: 8,
-    marginHorizontal: 24,
-    marginTop: 8,
-  };
-  return (
-    <FloatingLabelInput
-      {...params}
-      animationDuration={100}
-      customLabelStyles={{
-        colorFocused: "rgba(29, 29, 29, 0.64)",
-        colorBlurred: "rgba(29, 29, 29, 0.64)",
-        fontSizeFocused: 12,
-      }}
-      containerStyles={containerStyles}
-      isFocused={isFocused}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-    />
-  );
-}
-
 const ForgotPassword = ({ navigation }) => {
-  const [securePay, setSecurePay] = useState("");
-  const [email, setEmail] = useState("");
+
+
   return (
     <KeyboardAvoidingView
       style={styles.container}

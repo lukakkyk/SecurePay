@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
 const Title = ({ title, titleStyle, style }) => {
   return (
     <View style={[styles.container, style]}>

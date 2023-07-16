@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import { View, StyleSheet, TouchableHighlight } from "react-native";
 import Header from "./Header";
 import { AntDesign } from "@expo/vector-icons";
 import Pressable from "./Pressable";
+import { Text } from "react-native-paper";
 
 function LoginButton({ children, navigation }) {
   return (

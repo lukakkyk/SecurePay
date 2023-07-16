@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, TextInput, Text, StyleSheet, Animated } from "react-native";
+import { View, TextInput, StyleSheet, Animated } from "react-native";
 
 const FloatingLabelTextInput = ({ label, style, ...props}) => {
   const [isFocused, setIsFocused] = useState(false);

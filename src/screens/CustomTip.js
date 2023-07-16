@@ -1,23 +1,21 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   View,
-  Text,
   StyleSheet,
   Pressable,
-  Keyboard,
-  Dimensions,
 } from "react-native";
 import BottomSheet, { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import { AntDesign } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
 import Icon from "../components/Icon";
+import { Text } from "react-native-paper";
 
 const AddTip = ({ size = 350, navigation }) => {
   // ref
   const bottomSheetRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
-  const [bottomSheetHeight, setBottomSheetHeight] = useState(size);
+
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -33,7 +31,6 @@ const AddTip = ({ size = 350, navigation }) => {
 
   const snapPoints = useMemo(() => [size]);
 
-  // renders
   return (
     <View style={styles.container}>
       <Pressable
