@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, TextInput, StyleSheet, Animated, Image } from "react-native";
+import Pressable from "./Pressable";
 import Icon from "./Icon";
 const FloatingInputWithImageIcon = ({
   label,
@@ -12,6 +13,7 @@ const FloatingInputWithImageIcon = ({
   const [inputValue, setInputValue] = useState("");
   const floatingAnimation = useRef(new Animated.Value(0)).current;
   const labelRef = useRef(null);
+  const textInputRef = useRef(null);
 
   useEffect(() => {
     if (isFocused || inputValue) {
@@ -31,6 +33,9 @@ const FloatingInputWithImageIcon = ({
 
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
+  const handleTextInputPress = () => {
+    textInputRef.current.focus();
+  };
 
   const floatingLabelStyle = {
     transform: [
@@ -53,30 +58,37 @@ const FloatingInputWithImageIcon = ({
   };
 
   return (
-    <View style={[styles.formGroup, { containerStyle }]}>
-      <Animated.View style={[styles.inputContainer, inputBorderStyle]}>
-        {imageSource && <Image source={imageSource} style={styles.image} />}
-        <TextInput
-          style={styles.input}
-          value={inputValue}
-          onChangeText={setInputValue}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...props}
-        />
-        {icon && (
-          <Icon
-            name={icon}
-            iconColor="rgba(29, 29, 29, 0.84)"
-            style={styles.icon}
-            size={28}
+    <Pressable onPress={handleTextInputPress}>
+      <View style={[styles.formGroup, { containerStyle }]}>
+        <Animated.View style={[styles.inputContainer, inputBorderStyle]}>
+          {imageSource && <Image source={imageSource} style={styles.image} />}
+          <TextInput
+            style={styles.input}
+            value={inputValue}
+            onChangeText={setInputValue}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            ref={textInputRef}
+            onPressIn={textInputRef}
+            {...props}
           />
-        )}
-      </Animated.View>
-      <Animated.Text ref={labelRef} style={[styles.label, floatingLabelStyle]}>
-        {label}
-      </Animated.Text>
-    </View>
+          {icon && (
+            <Icon
+              name={icon}
+              iconColor="rgba(29, 29, 29, 0.84)"
+              style={styles.icon}
+              size={28}
+            />
+          )}
+        </Animated.View>
+        <Animated.Text
+          ref={labelRef}
+          style={[styles.label, floatingLabelStyle]}
+        >
+          {label}
+        </Animated.Text>
+      </View>
+    </Pressable>
   );
 };
 

@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { View, TextInput, StyleSheet, Animated } from "react-native";
+import Pressable from "./Pressable";
 
-const FloatingLabelTextInput = ({ label, style, ...props}) => {
+const FloatingLabelTextInput = ({ label, style, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const floatingAnimation = useRef(new Animated.Value(0)).current;
   const labelRef = useRef(null);
+  const textInputRef = useRef(null);
 
   useEffect(() => {
     if (isFocused || inputValue) {
@@ -26,6 +28,10 @@ const FloatingLabelTextInput = ({ label, style, ...props}) => {
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
+  const handleTextInputPress = () => {
+    textInputRef.current.focus();
+  };
+
   const floatingLabelStyle = {
     transform: [
       {
@@ -42,20 +48,22 @@ const FloatingLabelTextInput = ({ label, style, ...props}) => {
   };
 
   return (
-    <View style={style}>
+    <Pressable onPress={handleTextInputPress} style={style}>
       <TextInput
         style={[styles.input, isFocused ? styles.inputFocus : null]}
         value={inputValue}
         onChangeText={setInputValue}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        placeholderTextColor='rgba(40, 190, 109, 1)'
+        placeholderTextColor="rgba(40, 190, 109, 1)"
+        ref={textInputRef}
+        // onPressIn={textInputRef}
         {...props}
       />
       <Animated.Text ref={labelRef} style={[styles.label, floatingLabelStyle]}>
         {label}
       </Animated.Text>
-    </View>
+    </Pressable>
   );
 };
 
@@ -67,9 +75,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     // paddingVertical: 18,
     paddingLeft: 16,
-    paddingTop:15,
-    width:'100%',
-    height:56,
+    paddingTop: 15,
+    width: "100%",
+    height: 56,
     // paddingTop:10
   },
   inputFocus: {
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#888",
     opacity: 0.8,
-    fontFamily:'regular'
+    fontFamily: "regular",
   },
 });
 

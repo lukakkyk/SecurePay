@@ -1,9 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 import BottomSheet, { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import { AntDesign } from "@expo/vector-icons";
 import { Button } from "react-native-paper";
@@ -15,7 +11,6 @@ const AddTip = ({ size = 350, navigation }) => {
   const bottomSheetRef = useRef(null);
 
   const [isFocused, setIsFocused] = useState(false);
-
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -36,7 +31,7 @@ const AddTip = ({ size = 350, navigation }) => {
       <Pressable
         style={{ flex: 1 }}
         onPress={() => {
-            bottomSheetRef?.current?.close?.()
+          bottomSheetRef?.current?.close?.();
         }}
       >
         <BottomSheet
@@ -55,7 +50,7 @@ const AddTip = ({ size = 350, navigation }) => {
               <Icon name="edit" iconColor="#E2B238" size={20} />
               <Text style={styles.title}>Add Note</Text>
             </View>
-            <AntDesign name="plus" size={20} color="rgba(29, 29, 29, 0.84)" />
+            <Icon name="x" size={25} color="rgba(29, 29, 29, 0.84)" />
           </View>
           <View style={{ backgroundColor: "#fff" }}>
             <BottomSheetTextInput
