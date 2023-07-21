@@ -82,13 +82,13 @@ const Charge = ({ navigation }) => {
       <Text style={styles.title}>Current Sale</Text>
       <View
         style={{
-          // backgroundColor: "red",
+          backgroundColor: "#fff",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column",
-          marginTop: 47,
+          marginTop: 80,
           letterSpacing: 0.1,
           lineHeight: 24,
+          
         }}
       >
         <Text
@@ -96,6 +96,7 @@ const Charge = ({ navigation }) => {
             color: "rgba(29, 29, 29, 0.4)",
             fontSize: 14,
             fontFamily: "medium",
+          
           }}
         >
           Enter Amount
@@ -114,7 +115,8 @@ const Charge = ({ navigation }) => {
           {formatInput(cents)}
         </Text>
       </View>
-      <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
+      <View style={{backgroundColor:'#fff', flex:1, justifyContent:'flex-end'}}>
+      <View style={{ backgroundColor: "#fff" }}>
         <Pressable onPress={() => navigation.navigate("CustomTip")}>
           <View style={styles.outlineButton}>
             <Icon name="edit" iconColor="#E2B338" size={16} />
@@ -138,8 +140,7 @@ const Charge = ({ navigation }) => {
       <View
         style={{
           backgroundColor: "#fff",
-          flex: 1,
-          marginTop: 60,
+          marginTop: 30,
           justifyContent: "center",
           alignItems: "center",
           marginHorizontal: 24,
@@ -165,6 +166,7 @@ const Charge = ({ navigation }) => {
           {renderButton(0)}
           {renderButton("delete")}
         </View>
+      </View>
       </View>
     </SafeAreaView>
   );
