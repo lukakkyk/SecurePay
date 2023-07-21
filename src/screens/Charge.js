@@ -10,17 +10,27 @@ import Pressable from "../components/Pressable";
 import Icon from "../components/Icon";
 
 const Charge = ({ navigation }) => {
-  const [paymentAmount, setPaymentAmount] = useState("0.00");
+  const [cents, setCents] = useState(0);
 
   const handleButtonPress = (value) => {
     if (value === "delete") {
-      setPaymentAmount("0.00");
+      if (cents === 0) {
+        return;
+      }
+      const newCents = parseInt(String(cents).slice(1));
+      setCents(newCents);
     } else if (value === "C") {
-      setPaymentAmount("0.00");
+      setCents(0);
     } else {
-      const newPaymentAmount = parseFloat(paymentAmount) + parseFloat(value);
-      setPaymentAmount(newPaymentAmount.toFixed(2));
+      const newCents = cents * 10 + value;
+
+      setCents(newCents);
     }
+  };
+
+  const formatInput = (cents) => {
+    const dollars = (cents / 100).toFixed(2);
+    return `$${dollars}`;
   };
 
   const renderButton = (value) => {
@@ -100,7 +110,8 @@ const Charge = ({ navigation }) => {
             paddingHorizontal: 24,
           }}
         >
-          $ {paymentAmount}
+          {/* $ {paymentAmount} */}
+          {formatInput(cents)}
         </Text>
       </View>
       <View style={{ marginTop: 65, backgroundColor: "#fff" }}>
@@ -118,7 +129,7 @@ const Charge = ({ navigation }) => {
                 numberOfLines={1}
                 style={styles.chargeText}
               >
-                Charge ${paymentAmount}
+                Charge {formatInput(cents)}
               </Text>
             </View>
           </Pressable>
