@@ -13,20 +13,26 @@ const Charge = ({ navigation }) => {
   const [cents, setCents] = useState(0);
 
   const handleButtonPress = (value) => {
+  
     if (value === "delete") {
-      if (cents === 0) {
-        return;
+      if (cents < 10) {
+        
+        setCents(0);
+      } else {
+        const newCents = parseInt(String(cents).slice(0, -1));
+    
+        setCents(newCents);
       }
-      const newCents = parseInt(String(cents).slice(1));
-      setCents(newCents);
     } else if (value === "C") {
+      
       setCents(0);
     } else {
       const newCents = cents * 10 + value;
-
+      
       setCents(newCents);
     }
   };
+  
 
   const formatInput = (cents) => {
     const dollars = (cents / 100).toFixed(2);
@@ -88,7 +94,6 @@ const Charge = ({ navigation }) => {
           marginTop: 80,
           letterSpacing: 0.1,
           lineHeight: 24,
-          
         }}
       >
         <Text
@@ -96,7 +101,6 @@ const Charge = ({ navigation }) => {
             color: "rgba(29, 29, 29, 0.4)",
             fontSize: 14,
             fontFamily: "medium",
-          
           }}
         >
           Enter Amount
@@ -115,58 +119,60 @@ const Charge = ({ navigation }) => {
           {formatInput(cents)}
         </Text>
       </View>
-      <View style={{backgroundColor:'#fff', flex:1, justifyContent:'flex-end'}}>
-      <View style={{ backgroundColor: "#fff" }}>
-        <Pressable onPress={() => navigation.navigate("CustomTip")}>
-          <View style={styles.outlineButton}>
-            <Icon name="edit" iconColor="#E2B338" size={16} />
-            <Text style={styles.noteText}>Add Note</Text>
-          </View>
-        </Pressable>
-        <View style={{ marginHorizontal: 24 }}>
-          <Pressable onPress={() => navigation.navigate("AddTip")}>
-            <View style={styles.primaryButton}>
-              <Text
-                adjustsFontSizeToFit={true}
-                numberOfLines={1}
-                style={styles.chargeText}
-              >
-                Charge {formatInput(cents)}
-              </Text>
+      <View
+        style={{ backgroundColor: "#fff", flex: 1, justifyContent: "flex-end" }}
+      >
+        <View style={{ backgroundColor: "#fff" }}>
+          <Pressable onPress={() => navigation.navigate("CustomTip")}>
+            <View style={styles.outlineButton}>
+              <Icon name="edit" iconColor="#E2B338" size={16} />
+              <Text style={styles.noteText}>Add Note</Text>
             </View>
           </Pressable>
+          <View style={{ marginHorizontal: 24 }}>
+            <Pressable onPress={() => navigation.navigate("AddTip")}>
+              <View style={styles.primaryButton}>
+                <Text
+                  adjustsFontSizeToFit={true}
+                  numberOfLines={1}
+                  style={styles.chargeText}
+                >
+                  Charge {formatInput(cents)}
+                </Text>
+              </View>
+            </Pressable>
+          </View>
         </View>
-      </View>
-      <View
-        style={{
-          backgroundColor: "#fff",
-          marginTop: 30,
-          justifyContent: "center",
-          alignItems: "center",
-          marginHorizontal: 24,
-        }}
-      >
-        <View style={styles.row}>
-          {renderButton(1)}
-          {renderButton(2)}
-          {renderButton(3)}
+        <View
+          style={{
+            backgroundColor: "#fff",
+            marginTop: 30,
+            justifyContent: "center",
+            alignItems: "center",
+            marginHorizontal: 24,
+          }}
+        >
+          <View style={styles.row}>
+            {renderButton(1)}
+            {renderButton(2)}
+            {renderButton(3)}
+          </View>
+          <View style={styles.row}>
+            {renderButton(4)}
+            {renderButton(5)}
+            {renderButton(6)}
+          </View>
+          <View style={styles.row}>
+            {renderButton(7)}
+            {renderButton(8)}
+            {renderButton(9)}
+          </View>
+          <View style={styles.row}>
+            {renderButton("C")}
+            {renderButton(0)}
+            {renderButton("delete")}
+          </View>
         </View>
-        <View style={styles.row}>
-          {renderButton(4)}
-          {renderButton(5)}
-          {renderButton(6)}
-        </View>
-        <View style={styles.row}>
-          {renderButton(7)}
-          {renderButton(8)}
-          {renderButton(9)}
-        </View>
-        <View style={styles.row}>
-          {renderButton("C")}
-          {renderButton(0)}
-          {renderButton("delete")}
-        </View>
-      </View>
       </View>
     </SafeAreaView>
   );
